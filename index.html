@@ -1,41 +1,48 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Do‘konlar xaritasi</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <style>
-        #map {
-            height: 500px;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-    <h1>Do‘konlar xaritasi</h1>
-    <div id="map"></div>
+<html lang="en">
+    <head>
+        <title>Do'konlar xaritasi</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <style>
+            #map {
+                height: 700px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Do'konlar xaritasi</h1>
+        <div id="map"></div>
+    </body>
     <script>
         // Xaritani yaratish
-        const map = L.map('map').setView([41.2995, 69.2401], 10); // Markaziy nuqta (Toshkent)
+const map = L.map('map').setView([40.9650, 68.7600], 10); // Markaziy nuqta (Toshkent)
 
-        // OpenStreetMap qatlamini qo‘shish
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+// OpenStreetMap qatlamini qo‘shish
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
-        // Do‘konlar ro‘yxati
-        const dokoniList = [
-            { nomi: "Do‘kon 1", lat: 41.2995, lng: 69.2401 },
-            { nomi: "Do‘kon 2", lat: 41.3275, lng: 69.2817 },
-            { nomi: "Do‘kon 3", lat: 41.3111, lng: 69.2797 }
-        ];
+// Do‘konlar ro‘yxati
+const dokoniList = [
+    { nomi: "Aka-uka", lat: 40.9700, lng: 68.7600 },
+    { nomi: "Tog'ay ota do'koni", lat: 40.9695, lng: 68.7598 },
+    { nomi: "Allo doner", lat: 40.9704, lng: 68.7622 },
+    { nomi: "Qudrat", lat: 40.9595, lng: 68.7616 },
+    { nomi: "Issiq non", lat: 40.9594, lng: 68.7616 },
+    { nomi: "Game zone & market", lat: 40.9588, lng: 68.7620 },
+    { nomi: "Mini market", lat: 40.9583, lng: 68.7620 },
+    { nomi: "Turon non", lat: 40.9700, lng: 68.7602 },
+    { nomi: "Xoz mag", lat: 40.9549, lng: 68.7613 }
+];
 
-        // Har bir do‘konni xaritada belgilash
-        dokoniList.forEach(function(dokon) {
-            L.marker([dokon.lat, dokon.lng])
-                .addTo(map)
-                .bindPopup(`<b>${dokon.nomi}</b>`);
-        });
+
+// Har bir do‘konni xaritada belgilash
+dokoniList.forEach(function(dokon) {
+    L.marker([dokon.lat, dokon.lng])
+        .addTo(map)
+        .bindPopup(`<b>${dokon.nomi}</b>`);
+});
     </script>
-</body>
 </html>
